@@ -1,7 +1,7 @@
 //Express
-import * as express from "express";
-import * as cors from "cors";
-import * as path from "path";
+import express from "express";
+import cors from "cors";
+import path from "path";
 
 //Send grid
 import { sgMail } from "../lib/sendgrid";
@@ -37,7 +37,7 @@ const app = express();
 
 app.use(express.json({ limit: "100mb" }));
 
-const allowedHosts = ["http://127.0.0.1:8080", "https://lost-pets-8.web.app"];
+const allowedHosts = ["http://127.0.0.1:8080"];
 app.use(
   cors({
     origin: allowedHosts,
@@ -45,7 +45,13 @@ app.use(
 );
 
 app.get("/test", async (req, res) => {
-  res.json({ test: "ok" });
+  const allUsers = await User.findAll();
+
+  const allPets = await Pet.findAll();
+
+  const allReports = await Report.findAll();
+
+  res.json({ allUsers, allReports, allPets });
 });
 
 //devuelve true si existe el mail
