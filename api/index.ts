@@ -37,7 +37,7 @@ const app = express();
 
 app.use(express.json({ limit: "100mb" }));
 
-const allowedHosts = ["http://127.0.0.1:8080"];
+const allowedHosts = ["http://127.0.0.1:8080", "https://lost-pets-8.web.app"];
 app.use(
   cors({
     origin: allowedHosts,
