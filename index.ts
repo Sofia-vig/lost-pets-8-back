@@ -140,7 +140,7 @@ app.post("/pets/report", async (req, res) => {
 
   const msg = {
     to: email,
-    from: "sofiavign@gmail.com",
+    from: "wasd12.ns@gmail.com",
     subject: `Una persona vio a ${capitalize(name)}!!!`,
     text: `Alguien vio a tu mascota perdida`,
     html: `<h1>${capitalize(reporter_name)} vio a tu mascota!</h1>
