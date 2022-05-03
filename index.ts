@@ -33,14 +33,14 @@ const PORT = process.env.PORT || 3002;
 const app = express();
 
 app.use(express.json({ limit: "100mb" }));
-app.use(cors());
+// app.use(cors());
 
-// const allowedHosts = ["http://127.0.0.1:8080"];
-// app.use(
-//   cors({
-//     origin: allowedHosts,
-//   })
-// );
+const allowedHosts = ["http://127.0.0.1:8080", "https://lost-pets-8.web.app/"];
+app.use(
+  cors({
+    origin: allowedHosts,
+  })
+);
 
 app.get("/test", async (req, res) => {
   res.json({ test: "ok" });
