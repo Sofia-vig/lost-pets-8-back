@@ -4,7 +4,7 @@ import * as cors from "cors";
 import * as path from "path";
 
 //Send grid
-import { sgMail } from "../lib/sendgrid";
+import { sgMail } from "./lib/sendgrid";
 
 //Lodash
 import { capitalize } from "lodash";
@@ -12,21 +12,18 @@ import { capitalize } from "lodash";
 //Enviroment
 if (process.env.NODE_ENV !== "production") require("dotenv").config();
 
-//Models
-import { User, Pet, Report } from "../lib/models";
-
 //Controllers
 import {
   UserController,
   PetController,
   ReportController,
-} from "../lib/controllers";
+} from "./lib/controllers";
 const userController = new UserController();
 const petController = new PetController();
 const reportController = new ReportController();
 
 //Utils
-import { authMiddleware } from "./_utils";
+import { authMiddleware } from "./lib/_utils";
 
 //Sync
 // import "./_sync";
@@ -36,13 +33,14 @@ const PORT = process.env.PORT || 3002;
 const app = express();
 
 app.use(express.json({ limit: "100mb" }));
+app.use(cors());
 
-const allowedHosts = ["http://127.0.0.1:8080"];
-app.use(
-  cors({
-    origin: allowedHosts,
-  })
-);
+// const allowedHosts = ["http://127.0.0.1:8080"];
+// app.use(
+//   cors({
+//     origin: allowedHosts,
+//   })
+// );
 
 app.get("/test", async (req, res) => {
   res.json({ test: "ok" });
@@ -166,9 +164,6 @@ app.post("/pets/report", async (req, res) => {
 });
 
 app.use(express.static(path.resolve(__dirname, "../dist")));
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../dist/index.html"));
-});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

@@ -1,4 +1,4 @@
-import { User, Pet, Report } from "../lib/models";
+import { User, Pet, Report } from "./models";
 
 User.sequelize
   .sync({ alter: true })

@@ -1,7 +1,7 @@
 import { Pet } from "../models";
 import { cloudinary } from "../cloudinary";
 import { indexPets } from "../algolia";
-import { bodyToItemAlgolia, formatDataDB } from "../../api/_utils";
+import { bodyToItemAlgolia, formatDataDB } from "../_utils";
 
 export class PetController {
   async createPet(userId, data) {

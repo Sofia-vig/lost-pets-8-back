@@ -1,7 +1,7 @@
 import { User } from "../models";
-import { getSHA256 } from "../../api/_utils";
+import { getSHA256 } from "../_utils";
 import * as jwt from "jsonwebtoken";
-import { SECRET } from "../../api/_utils";
+import { SECRET } from "../_utils";
 
 type UserData = { email: string; fullname: string; password: string };
 
