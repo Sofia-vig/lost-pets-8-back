@@ -1,7 +1,7 @@
 //Express
-import express from "express";
-import cors from "cors";
-import path from "path";
+import * as express from "express";
+import * as cors from "cors";
+import * as path from "path";
 
 //Send grid
 import { sgMail } from "../lib/sendgrid";
@@ -45,13 +45,7 @@ app.use(
 );
 
 app.get("/test", async (req, res) => {
-  const allUsers = await User.findAll();
-
-  const allPets = await Pet.findAll();
-
-  const allReports = await Report.findAll();
-
-  res.json({ allUsers, allReports, allPets });
+  res.json({ test: "ok" });
 });
 
 //devuelve true si existe el mail

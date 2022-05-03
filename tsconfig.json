@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "target": "ES5",
-    "outDir": "dist",
-    "esModuleInterop": true,
+    "target": "ESNEXT",
     "moduleResolution": "node"
-  },
-  "include": ["./**/*.*"]
+  }
 }
