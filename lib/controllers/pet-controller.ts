@@ -82,7 +82,7 @@ export class PetController {
     const { lat, lng } = coord;
     const { hits } = await indexPets.search("", {
       aroundLatLng: [lat, lng].join(","),
-      aroundRadius: 4000,
+      aroundRadius: 8000,
     });
     const allPets = hits.filter((p: any) => !p.founded);
     return { allPets };
